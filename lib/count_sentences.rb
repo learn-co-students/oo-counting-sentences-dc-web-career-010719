@@ -15,6 +15,9 @@ class String
   end
 
   def count_sentences
-    (sentence? || question? || exclamation?) ? self.scan(/[^\.!?]+[\.!?]/).map(&:strip).count : 0
+    sentence_array = self.split(/[.?!]/)
+    sentence_array.delete_if {|sentence| sentence.empty?}
+    sentence_array.length
+    # (sentence? || question? || exclamation?) ? self.scan(/[^\.!?]+[\.!?]/).map(&:strip).count : 0
   end
 end
